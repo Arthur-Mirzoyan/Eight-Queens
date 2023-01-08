@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace EEIPQ
+namespace Queen
 {
     class Program
     {
