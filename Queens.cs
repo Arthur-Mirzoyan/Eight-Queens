@@ -8,12 +8,9 @@ namespace EEIPQ
         static public bool HorizontalCheck(in byte[] arr)
         {
             for (int i = 1; i < 9; i++)
-            {
                 for (int j = i + 1; j < 9; j++)
-                {
-                    if (arr[i] == arr[j]) return false;
-                }
-            }
+                    if (arr[i] == arr[j])
+                        return false;
 
             return true;
         }
@@ -21,12 +18,9 @@ namespace EEIPQ
         static public bool DiagonalCheck(in byte[] arr)
         {
             for (int i = 1; i < 9; i++)
-            {
                 for (int j = i + 1; j < 9; j++)
-                {
-                    if (Math.Abs(arr[i] - arr[j]) == Math.Abs(j - i)) return false;
-                }
-            }
+                    if (Math.Abs(arr[i] - arr[j]) == Math.Abs(j - i))
+                        return false;
 
             return true;
         }
@@ -67,7 +61,8 @@ namespace EEIPQ
                                             {
                                                 arr[0] = x;
                                                 Console.Write(arr[0] + "\t");
-                                                for (byte m = 1; m < 9; m++) Console.Write(arr[m]);
+                                                for (byte m = 1; m < 9; m++)
+                                                    Console.Write(arr[m]);
                                                 x++;
                                                 Console.WriteLine("\n");
                                             }
