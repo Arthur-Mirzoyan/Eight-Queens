@@ -67,4 +67,8 @@ canvas {
         height: 10vmin;
         font-size: 5vi;
     }
+
+    .info p {
+        font-size: 5vi;
+    }
 }
