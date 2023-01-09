@@ -59,10 +59,13 @@ function get() {
 
 const places = get()
 const board = [];
+const letters = ["A", "B", "C", "D", "E", "F", "G", "H"];
 const side = 70;
 const text = document.getElementById("variant");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
+const info = document.getElementsByClassName("info")[0];
+
 var variant = 1;
 
 for (let i = 0; i < 8; i++) {
@@ -74,27 +77,31 @@ for (let i = 0; i < 8; i++) {
 
 function setup() {
     createCanvas(560, 560);
+    toggleVariant();
 }
 
 function draw() {
     background(220);
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
-            board[i][j] ? fill("black") : fill("white");
             if (places[variant - 1][j + 1] == i + 1)
                 fill("red");
+            else
+                board[i][j] ? fill("black") : fill("white");
+
             rect(i * side, j * side, side);
         }
     }
 
-    variant <= 1 ? prevBtn.className = "inActive" : prevBtn.className = "active";;
-    variant >= 92 ? nextBtn.className = "inActive" : nextBtn.className = "active";;
+    variant <= 1 ? prevBtn.className = "inActive" : prevBtn.className = "active";
+    variant >= 92 ? nextBtn.className = "inActive" : nextBtn.className = "active";
 }
 
 function Previous() {
     if (variant > 1) {
         variant--;
         text.innerText = `Variant : ${variant}`;
+        toggleVariant();
     }
 }
 
@@ -102,5 +109,12 @@ function Next() {
     if (variant < 92) {
         variant++;
         text.innerText = `Variant : ${variant}`;
+        toggleVariant();
     }
+}
+
+function toggleVariant() {
+    letters.map((item, index) => {
+        info.children[index].innerText = `${item} ${places[variant - 1][index + 1]}`;
+    });
 }
