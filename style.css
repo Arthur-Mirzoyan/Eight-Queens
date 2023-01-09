@@ -1,13 +1,11 @@
-body{
-    display: grid;
-    justify-content: center;
+body {
+    text-align: center;
 }
 
 .navBar {
     display: flex;
     gap: 20px;
     height: 50px;
-    width: 560px;
     justify-content: center;
     font-size: 1.5rem;
     align-items: center;
@@ -21,6 +19,10 @@ button {
     background-color: green;
     border-radius: 10px;
     border: none;
+}
+
+#prev {
+    background-color: orangered;
 }
 
 .active:hover {
@@ -40,14 +42,29 @@ button {
     color: red;
 }
 
-.info{
+.info {
     display: flex;
-    width: 560px;
     justify-content: center;
     gap: 20px;
 }
 
-.info p{
-    font-size: 18px;
+.info p {
+    font-size: 20px;
     font-weight: bold;
+}
+
+canvas {
+    background-color: red;
+    width: 90vmin !important;
+    height: 90vmin !important;
+    max-width: 560px !important;
+    max-height: 560px !important;
+}
+
+@media screen and (max-width: 500px) {
+    button {
+        width: 25vmin;
+        height: 10vmin;
+        font-size: 5vi;
+    }
 }

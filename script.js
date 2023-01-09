@@ -1,3 +1,21 @@
+const places = get()
+const board = [];
+const letters = ["A", "B", "C", "D", "E", "F", "G", "H"];
+const text = document.getElementById("variant");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+const info = document.getElementsByClassName("info")[0];
+const canvas = document.getElementsByTagName("canvas");
+
+var variant = 1;
+
+for (let i = 0; i < 8; i++) {
+    board[i] = [];
+    for (let j = 0; j < 8; j++) {
+        (i + j) % 2 == 0 ? board[i].push(0) : board[i].push(1);
+    }
+}
+
 function HorizontalCheck(arr) {
     for (let i = 1; i < 9; i++)
         for (let j = i + 1; j < 9; j++)
@@ -57,31 +75,16 @@ function get() {
     return result;
 }
 
-const places = get()
-const board = [];
-const letters = ["A", "B", "C", "D", "E", "F", "G", "H"];
-const side = 70;
-const text = document.getElementById("variant");
-const nextBtn = document.getElementById("next");
-const prevBtn = document.getElementById("prev");
-const info = document.getElementsByClassName("info")[0];
-
-var variant = 1;
-
-for (let i = 0; i < 8; i++) {
-    board[i] = [];
-    for (let j = 0; j < 8; j++) {
-        (i + j) % 2 == 0 ? board[i].push(0) : board[i].push(1);
-    }
-}
-
 function setup() {
     createCanvas(560, 560);
     toggleVariant();
 }
 
 function draw() {
-    background(220);
+    let width = window.width;
+    let height = window.height;
+    let side = Math.min(width, height) / 8;
+
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
             if (places[variant - 1][j + 1] == i + 1)
