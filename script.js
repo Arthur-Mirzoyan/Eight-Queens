@@ -9,13 +9,6 @@ const canvas = document.getElementsByTagName("canvas");
 
 var variant = 1;
 
-for (let i = 0; i < 8; i++) {
-    board[i] = [];
-    for (let j = 0; j < 8; j++) {
-        (i + j) % 2 == 0 ? board[i].push(0) : board[i].push(1);
-    }
-}
-
 function HorizontalCheck(arr) {
     for (let i = 1; i < 9; i++)
         for (let j = i + 1; j < 9; j++)
@@ -87,7 +80,7 @@ function draw() {
 
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
-            if (places[variant - 1][j + 1] == i + 1)
+            if (board[i][j] == 2)
                 fill("red");
             else
                 board[i][j] ? fill("black") : fill("white");
@@ -120,4 +113,14 @@ function toggleVariant() {
     letters.map((item, index) => {
         info.children[index].innerText = `${item} ${places[variant - 1][index + 1]}`;
     });
+
+    for (let i = 7; i >= 0; i--) {
+        board[i] = [];
+        for (let j = 0; j < 8; j++) {
+            if (places[variant - 1][i + 1] == 8 - j)
+                board[i].push(2);
+            else
+                (i + j) % 2 == 0 ? board[i].push(0) : board[i].push(1);
+        }
+    }
 }
